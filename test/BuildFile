@@ -1,0 +1,5 @@
+<use name=CommonTools/TrackerMap>
+<use name=qt>
+<use name="root">
+<bin file=VisTrackerMapApp.cpp name=VisTrackerMapApp>
+</bin>
