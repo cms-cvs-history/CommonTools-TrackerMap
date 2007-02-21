@@ -276,6 +276,60 @@ xmlns:xlink="http://www.w3.org/1999/xlink"
                 var myNewWidth = myOldWidth ;
                 var myNewHeight = myOldHeight ;
                 break;
+           case "PIXB":
+                var myNewX = 0.;
+                var myNewY = 540.;
+                var myNewWidth = 62. ;
+                var myNewHeight = 36. ;
+                break;
+           case "FPIX-z":
+                var myNewX = 0.;
+                var myNewY = 581.;
+                var myNewWidth = 35.83 ;
+                var myNewHeight = 21.01 ;
+                break;
+           case "FPIX+z":
+                var myNewX = 0.;
+                var myNewY = 516.;
+                var myNewWidth = 35.83 ;
+                var myNewHeight = 21.01 ;
+                break;
+           case "TID-z":
+                var myNewX = 40.0;
+                var myNewY = 585.;
+                var myNewWidth = 34. ;
+                var myNewHeight = 15. ;
+                break;
+           case "TID+z":
+                var myNewX = 40.0;
+                var myNewY = 520.;
+                var myNewWidth = 34. ;
+                var myNewHeight = 15. ;
+                break;
+           case "TOB":
+                var myNewX = 97.;
+                var myNewY = 542.;
+                var myNewWidth = 72. ;
+                var myNewHeight = 36. ;
+                break;
+           case "TIB":
+                var myNewX = 46.8;
+                var myNewY = 540.;
+                var myNewWidth = 64.8 ;
+                var myNewHeight = 38. ;
+                break;
+           case "TEC-z":
+                var myNewX = 73.8;
+                var myNewY = 568.;
+                var myNewWidth = 115.2 ;
+                var myNewHeight = 57.6 ;
+                break;
+           case "TEC+z":
+                var myNewX = 73.8;
+                var myNewY = 500.;
+                var myNewWidth = 115.2 ;
+                var myNewHeight = 57.6 ;
+                break;
 
 	   default:
 		var myNewX = this.constrXmin;
@@ -368,10 +422,7 @@ if(inOrOut=="in" || inOrOut=="out" || inOrOut=="full"){
 	     else {	
 	     }		
 	}
-        if (inOrOut == "up") myRefMapDragger.zoom("up");
-        if (inOrOut == "down") myRefMapDragger.zoom("down");
-        if (inOrOut == "right") myRefMapDragger.zoom("right");
-        if (inOrOut == "left") myRefMapDragger.zoom("left");
+if(inOrOut!="in" && inOrOut!="out" && inOrOut!="full") myRefMapDragger.zoom(inOrOut);
   }
 
 function pausecomp(millis)
@@ -402,6 +453,15 @@ function pausecomp(millis)
 <button onclick="zoomIt('down');">Down</button>
 <button onclick="zoomIt('left');">Left</button>
 <button onclick="zoomIt('right');">Right</button>
+<button onclick="zoomIt('TIB');">TIB</button>
+<button onclick="zoomIt('TOB');">TOB</button>
+<button onclick="zoomIt('TID+z');">TID+z</button>
+<button onclick="zoomIt('TID-z');">TID-z</button>
+<button onclick="zoomIt('TEC+z');">TEC+z</button>
+<button onclick="zoomIt('TEC-z');">TEC-z</button>
+<button onclick="zoomIt('PIXB');">PIXB</button>
+<button onclick="zoomIt('FPIX+z');">FPIX+z</button>
+<button onclick="zoomIt('FPIX-z');">FPIX-z</button>
 <br />
 <svg:svg width="100%" height="100%" viewBox="0 0 1400 700"  >
 <svg:defs>
