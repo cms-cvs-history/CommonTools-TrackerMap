@@ -1,0 +1,18 @@
+This directory contains the two files necessary to create the trackermap and some test programs:
+  tracker.dat - ideal tracker geometry description
+  trackermap.txt - Javascript interface
+  VisTrackerMapApp.cpp - demo on trackermap qt interface
+  TrackerDigiGeometryAnalyzer.cc - produces the image to test module numbering
+  tracker.cfg - used to run the previous program
+To run tracker.cfg you must:
+  cvs co Geometry/TrackerGeometryBuilder/test
+  cd Geometry/TrackerGeometryBuilder/test
+  mv TrackerDigiGeometryAnalyzer.cc TrackerDigiGeometryAnalyzer.ccold
+  download tracker.dat , trackermap.txt , TrackerDigiGeometryAnalyzer.cc , tracker.cfg 
+  vi BuildFile
+  add line:
+   <use name=CommonTools/TrackerMap>
+   scramv1 b
+   cmsRun -p tracker.cfg
+   open the file svgmap.xml with firefox (2.0 or later)
+  
