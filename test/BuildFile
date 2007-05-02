@@ -7,7 +7,8 @@
 <use name=qt>
 <use name="root">
 <library file=TrackerGeometryTest.cc name=TrackerGeometryTest> 
-<flags SEAL_PLUGIN_NAME="TrackerGeometryTest">
+<use name=Geometry/Records>
+<flags EDM_PLUGIN=1>
 </library> 	
 <bin file=VisTrackerMapApp.cpp name=VisTrackerMapApp>
 </bin>
