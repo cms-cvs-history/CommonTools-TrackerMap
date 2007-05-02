@@ -1,5 +1,13 @@
 <use name=CommonTools/TrackerMap>
+<use name=Geometry/TrackerGeometryBuilder>
+<use name=Geometry/TrackerNumberingBuilder>
+<use name=Geometry/CommonDetUnit>
+<use name=CondFormats/Alignment>
+<use name=FWCore/Framework>      
 <use name=qt>
 <use name="root">
+<library file=TrackerGeometryTest.cc name=TrackerGeometryTest> 
+<flags SEAL_PLUGIN_NAME="TrackerGeometryTest">
+</library> 	
 <bin file=VisTrackerMapApp.cpp name=VisTrackerMapApp>
 </bin>
