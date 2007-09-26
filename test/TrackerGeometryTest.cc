@@ -216,7 +216,9 @@ if(subdet==1){moduleno=((*begin)->geographicalId().rawId() >>2)&0x3F; }
           } else {tkMap->fill(idmod,float(subdet));}
    }
 
-    tkMap->print(true);
+    tkMap->print(true,0.,0.,"svgmap1");
+  TrackerMap * tkMap1 = new TrackerMap( "Trackermap2");
+    tkMap1->print(true,0.,0.,"svgmap2");
 }
 
 //define this as a plug-in
