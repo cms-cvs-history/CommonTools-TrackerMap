@@ -12,6 +12,18 @@ This directory contains the two files necessary to create the trackermap and som
   
   TrackerDigiGeometryTest.cc - produces the image to test module numbering
   tracker.cfg - used to run the previous program
-   cmsRun -p tracker.cfg will create a file svgmap.xml
-   open the file svgmap.xml with firefox (2.0 or later)
-  
+   cmsRun -p tracker.cfg will create the files svgmap1.xml and svgmap2.xml
+   open these files with firefox (2.0 or later)
+
+ This demo will also save the test image in jpg,svg,pdf,png format. This is done using the free program batik that must be properly installed.
+Follow these steps (in the directory where tracker.cfg runs):
+ 1 - Check that java is working by giving the command:
+      java - version
+ (you should see a message like this:
+java version "1.4.2"
+Java(TM) 2 Runtime Environment, Standard Edition (build 1.4.2-b28)
+Java HotSpot(TM) Client VM (build 1.4.2-b28, mixed mode)
+
+ 2 -  wget http://apache.mirror.testserver.li/xmlgraphics/batik/batik-1.7beta1.zip
+ 3 - unzip batik-1.7beta1.zip
+ 4 - mv batik-1.7 batik
