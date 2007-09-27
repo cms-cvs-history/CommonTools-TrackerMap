@@ -220,6 +220,10 @@ if(subdet==1){moduleno=((*begin)->geographicalId().rawId() >>2)&0x3F; }
    }
 
     tkMap->print(true,0.,0.,"svgmap1");
+    tkMap->save(true,0.,0.,"svgmap1",1500,800,"png");
+    tkMap->save(true,0.,0.,"svgmap1",1500,800,"jpg");
+    tkMap->save(true,0.,0.,"svgmap1",1500,800,"pdf");
+    tkMap->save(true,0.,0.,"svgmap1");//default format svg without Javascript
     tkMap1->print(true,0.,0.,"svgmap2");
 }
 
