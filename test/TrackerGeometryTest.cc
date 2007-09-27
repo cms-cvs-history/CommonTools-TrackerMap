@@ -215,9 +215,9 @@ if(subdet==1){moduleno=((*begin)->geographicalId().rawId() >>2)&0x3F; }
           if(forback==1)tkMap->fillc(idmod,(160-petalno*20),255,255);
           } else {tkMap->fill(idmod,float(subdet));}
    }
+  TrackerMap * tkMap1 = new TrackerMap( "Trackermap2");
 
     tkMap->print(true,0.,0.,"svgmap1");
-  TrackerMap * tkMap1 = new TrackerMap( "Trackermap2");
     tkMap1->print(true,0.,0.,"svgmap2");
 }
 
