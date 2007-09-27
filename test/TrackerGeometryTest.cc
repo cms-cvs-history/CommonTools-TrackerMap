@@ -57,6 +57,8 @@ void
 TrackerGeometryTest::analyze( const edm::Event& iEvent, const edm::EventSetup& iSetup )
 {
   TrackerMap * tkMap = new TrackerMap( "GeomDetUnitId : move the mouse on the module and look at the second text line below");
+  TrackerMap * tkMap1 = new TrackerMap( "Default rainbow palette test");
+  tkMap1->setPalette(2);
    using namespace edm;
 
    edm::LogInfo("TrackerGeometryTest")<< "Here I am";
@@ -204,6 +206,7 @@ if(subdet==1){moduleno=((*begin)->geographicalId().rawId() >>2)&0x3F; }
       }
       } //end of endcap part
        if (isStereo==2) nmod=nmod+100;
+        tkMap1->fill(idmod,float(nlay*nmod));
      name4=" "; if (isStereo==2)name4=" stereo";
          if(subdet==1)tkMap->fillc(idmod,0,255-ringno*5,ringno*5);
          if(subdet==3)tkMap->fillc(idmod,ringno*4,255-ringno*4,ringno*4);
@@ -215,7 +218,6 @@ if(subdet==1){moduleno=((*begin)->geographicalId().rawId() >>2)&0x3F; }
           if(forback==1)tkMap->fillc(idmod,(160-petalno*20),255,255);
           } else {tkMap->fill(idmod,float(subdet));}
    }
-  TrackerMap * tkMap1 = new TrackerMap( "Trackermap2");
 
     tkMap->print(true,0.,0.,"svgmap1");
     tkMap1->print(true,0.,0.,"svgmap2");
