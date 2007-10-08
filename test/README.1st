@@ -18,7 +18,7 @@ This directory contains the two files necessary to create the trackermap and som
  This demo will also save the test image in jpg,svg,pdf,png format. This is done using the free program batik that must be properly installed.
 Follow these steps (in the directory where tracker.cfg runs):
  1 - Check that java is working by giving the command:
-      java - version
+      java -version
  (you should see a message like this:
 java version "1.4.2"
 Java(TM) 2 Runtime Environment, Standard Edition (build 1.4.2-b28)
