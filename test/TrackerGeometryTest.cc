@@ -221,12 +221,14 @@ if(subdet==1){moduleno=((*begin)->geographicalId().rawId() >>2)&0x3F; }
 
     tkMap->print(true,0.,0.,"svgmap1");
     tkMap->showPalette(true);
+    tkMap->save(true,0.,0.,"svgmap1.svg");//default format svg without Javascript
     tkMap->save(true,0.,0.,"svgmap1.png",1500,800);
     tkMap->save(true,0.,0.,"svgmap1.jpg",1500,800);
     tkMap->save(true,0.,0.,"svgmap1.pdf",1500,800);
-    tkMap->save(true,0.,0.,"svgmap1");//default format svg without Javascript
     tkMap1->showPalette(true);
     tkMap1->print(true,0.,0.,"svgmap2");
+    tkMap1->save(true,0.,0.,"svgmap2.png",3000,1600);
+    tkMap1->save(true,0.,0.,"svgmap2.pdf",3000,1600);
 }
 
 //define this as a plug-in
