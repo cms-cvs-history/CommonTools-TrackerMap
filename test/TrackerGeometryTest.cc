@@ -221,9 +221,9 @@ if(subdet==1){moduleno=((*begin)->geographicalId().rawId() >>2)&0x3F; }
 
     tkMap->print(true,0.,0.,"svgmap1");
     tkMap->showPalette(true);
-    tkMap->save(true,0.,0.,"svgmap1",1500,800,"png");
-    tkMap->save(true,0.,0.,"svgmap1",1500,800,"jpg");
-    tkMap->save(true,0.,0.,"svgmap1",1500,800,"pdf");
+    tkMap->save(true,0.,0.,"svgmap1.png",1500,800);
+    tkMap->save(true,0.,0.,"svgmap1.jpg",1500,800);
+    tkMap->save(true,0.,0.,"svgmap1.pdf",1500,800);
     tkMap->save(true,0.,0.,"svgmap1");//default format svg without Javascript
     tkMap1->showPalette(true);
     tkMap1->print(true,0.,0.,"svgmap2");
