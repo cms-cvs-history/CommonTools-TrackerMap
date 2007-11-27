@@ -33,6 +33,8 @@ class TrackerGeometryTest : public edm::EDAnalyzer {
       virtual void analyze( const edm::Event&, const edm::EventSetup& );
    private:
       // ----------member data ---------------------------
+ edm::ParameterSet pset;
+
 };
 
 
@@ -40,6 +42,8 @@ class TrackerGeometryTest : public edm::EDAnalyzer {
 TrackerGeometryTest::TrackerGeometryTest( const edm::ParameterSet& iConfig )
 {
    //now do what ever initialization is needed
+pset = iConfig.getParameter<edm::ParameterSet>("TkmapParameters");
+
 
 }
 TrackerGeometryTest::~TrackerGeometryTest()
@@ -56,8 +60,11 @@ TrackerGeometryTest::~TrackerGeometryTest()
 void
 TrackerGeometryTest::analyze( const edm::Event& iEvent, const edm::EventSetup& iSetup )
 {
-  TrackerMap * tkMap = new TrackerMap( "GeomDetUnitId : move the mouse on the module and look at the second text line below");
-  TrackerMap * tkMap1 = new TrackerMap( "Default rainbow palette test");
+ TrackerMap * tkMap = new TrackerMap(pset);
+  TrackerMap * tkMap1 = new TrackerMap("TrackerMap without pset");
+
+//  TrackerMap * tkMap = new TrackerMap( "GeomDetUnitId : move the mouse on the module and look at the second text line below");
+//  TrackerMap * tkMap1 = new TrackerMap( "Default rainbow palette test");
   tkMap1->setPalette(1);
    using namespace edm;
 
