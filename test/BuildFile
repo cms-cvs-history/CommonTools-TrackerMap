@@ -3,10 +3,14 @@
 <use name=Geometry/TrackerNumberingBuilder>
 <use name=Geometry/CommonDetUnit>
 <use name=CondFormats/Alignment>
+<use name=CondFormats/SiStripObjects>
+<use name=CalibFormats/SiStripObjects>
+<use name=CondFormats/DataRecord>
 <use name=FWCore/Framework>      
 <use name=qt>
 <use name="root">
 <library file=TrackerGeometryTest.cc name=TrackerGeometryTest> 
+<library file=FedTrackerMapTest.cc name=FedTrackerMapTest> 
 <use name=Geometry/Records>
 <flags EDM_PLUGIN=1>
 </library> 	
