@@ -24,6 +24,10 @@ using namespace std;
 #include "CommonTools/TrackerMap/interface/TrackerMap.h"
 #include "CommonTools/TrackerMap/interface/TmModule.h"
 #include "FWCore/MessageLogger/interface/MessageLogger.h"
+#include "CondFormats/SiStripObjects/interface/SiStripFedCabling.h"
+#include "CondFormats/DataRecord/interface/SiStripFedCablingRcd.h"
+#include "CondFormats/SiStripObjects/interface/FedChannelConnection.h"
+#include "CommonTools/TrackerMap/interface/TmApvPair.h"
 class TrackerGeometryTest : public edm::EDAnalyzer {
    public:
       explicit TrackerGeometryTest( const edm::ParameterSet& );
@@ -60,8 +64,11 @@ TrackerGeometryTest::~TrackerGeometryTest()
 void
 TrackerGeometryTest::analyze( const edm::Event& iEvent, const edm::EventSetup& iSetup )
 {
- TrackerMap * tkMap = new TrackerMap(pset);
-  TrackerMap * tkMap1 = new TrackerMap("TrackerMap without pset");
+ edm::ESHandle<SiStripFedCabling> pDD1;
+ iSetup.get<SiStripFedCablingRcd>().get(pDD1 );
+ TrackerMap * tkMap = new TrackerMap();//trackermap without fed processing
+  TrackerMap * tkMap1 = new TrackerMap(pset,pDD1);
+  TrackerMap * tkMap2 = new TrackerMap(pset,pDD1);
 
 //  TrackerMap * tkMap = new TrackerMap( "GeomDetUnitId : move the mouse on the module and look at the second text line below");
 //  TrackerMap * tkMap1 = new TrackerMap( "Default rainbow palette test");
@@ -225,7 +232,26 @@ if(subdet==1){moduleno=((*begin)->geographicalId().rawId() >>2)&0x3F; }
           if(forback==1)tkMap->fillc(idmod,(160-petalno*20),255,255);
           } else {tkMap->fill(idmod,float(subdet));}
    }
+const vector<unsigned short> feds = pDD1->feds();
+  cout<<"SiStripFedCabling has "<< feds.size()<<" active FEDS"<<endl;
+    int num_board=0;
+    int num_crate;
+  for(vector<unsigned short>::const_iterator ifed = feds.begin();ifed<feds.end();ifed++){
+    const std::vector<FedChannelConnection> theconn = pDD1->connections( *ifed );
+    for(std::vector<FedChannelConnection>::const_iterator iconn = theconn.begin();iconn<theconn.end();iconn++){
+      if(iconn->apvPairNumber()==0)tkMap2->fill(tkMap2->module(iconn->fedId(),iconn->fedCh()),(float)num_board);
+      int key = iconn->fedId()*1000+iconn->fedCh();
+      TmApvPair* apvpair = tkMap2->apvMap[key];
+      if(apvpair!=0)tkMap2->fill_fed_channel(iconn->fedId(),iconn->fedCh(),(float)apvpair->mod->layer);    
+    }
+    num_board++;
+  }
 
+
+    tkMap2->showPalette(true);
+    tkMap2->print(true,0.,0.,"svgmap3");
+    tkMap2->save_as_fedtrackermap(true,0.,0.,"fedsvgmap3.png",3000,1600);
+    tkMap2->save(true,0.,0.,"svgmap3.png",3000,1600);
     tkMap->print(true,0.,0.,"svgmap1");
     tkMap->showPalette(true);
     tkMap->save(true,0.,0.,"svgmap1.svg");//default format svg without Javascript
@@ -234,6 +260,8 @@ if(subdet==1){moduleno=((*begin)->geographicalId().rawId() >>2)&0x3F; }
     tkMap->save(true,0.,0.,"svgmap1.pdf",1500,800);
     tkMap1->showPalette(true);
     tkMap1->print(true,0.,0.,"svgmap2");
+    tkMap1->save_as_fedtrackermap(true,0.,0.,"fedsvgmap2.png",3000,1600);
+    tkMap1->save_as_fedtrackermap(true,0.,0.,"fedsvgmap2.pdf",3000,1600);
     tkMap1->save(true,0.,0.,"svgmap2.png",3000,1600);
     tkMap1->save(true,0.,0.,"svgmap2.pdf",3000,1600);
 }
