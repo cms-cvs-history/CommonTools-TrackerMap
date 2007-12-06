@@ -10,6 +10,9 @@
 <use name=qt>
 <use name="root">
 <library file=TrackerGeometryTest.cc name=TrackerGeometryTest> 
+<use name=Geometry/Records>
+<flags EDM_PLUGIN=1>
+</library>
 <library file=FedTrackerMapTest.cc name=FedTrackerMapTest> 
 <use name=Geometry/Records>
 <flags EDM_PLUGIN=1>
