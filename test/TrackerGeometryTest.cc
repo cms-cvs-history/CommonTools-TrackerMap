@@ -247,8 +247,10 @@ const vector<unsigned short> feds = pDD1->feds();
     num_board++;
   }
 
-
+    tkMap1->showPalette(true);
+    tkMap1->printall(true,0.,0.,"tmap");
     tkMap2->showPalette(true);
+    tkMap2->printall(true,0.,0.,"fakecabling");
     tkMap2->print(true,0.,0.,"svgmap3");
     tkMap2->save_as_fedtrackermap(true,0.,0.,"fedsvgmap3.png",3000,1600);
     tkMap2->save(true,0.,0.,"svgmap3.png",3000,1600);
