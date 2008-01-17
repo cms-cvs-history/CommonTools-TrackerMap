@@ -110,8 +110,8 @@ FedTrackerMapTest::analyze( const edm::Event& iEvent, const edm::EventSetup& iSe
 
     tkMap->printall(true,0.,0.,"tif");
 
-//  tkMap->save_as_fedtrackermap(true,0.,0.,"fedsvgmap2.png",3000,1600);
-  //tkMap->save_as_fedtrackermap(true,0.,0.,"fedsvgmap2.pdf",3000,1600);
+  tkMap->save_as_fedtrackermap(true,0.,0.,"fedsvgmap2.png",3000,1600);
+tkMap->save_as_fedtrackermap(true,0.,0.,"fedsvgmap2.svg",3000,1600);
 
 }
 

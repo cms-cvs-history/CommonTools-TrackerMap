@@ -12,9 +12,12 @@ This directory contains the two files necessary to create the trackermap and som
   
   TrackerDigiGeometryTest.cc - produces the image to test module numbering
   tracker.cfg - used to run the previous program
-   cmsRun -p tracker.cfg will create the files svgmap1.xml and svgmap2.xml
-   open these files with firefox (2.0 or later)
-
+   cmsRun -p tracker.cfg will create many files to look at module numbering and  "fakecabling"  
  This demo will also save the test image in jpg,svg,pdf,png format. 
- This directory contains the results of this test:
+
+ FedTrackerMapTest.cc - produces the images for TIF fed cabling
+ tracker__realCabling.cfg  - used to run the program 
+   cmsRun tracker_realCabling will create the files needed to  look at
+   this cabling  
+ This directory contains the results of these last two test programs:
 http://cmsdoc.cern.ch/~gzito/cms/test/
