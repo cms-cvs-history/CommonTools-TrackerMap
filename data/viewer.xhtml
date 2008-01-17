@@ -8,13 +8,23 @@
     var zoomAmount;
     var zoomFactor;
     var imageWidth,imageHeight;
+    var remotewin;
 
     // capture mouse events
 
     document.addEventListener('mouseup',mouseUp,false);
     document.addEventListener('mousemove',mouseMove,false);
-    layer=0;crate=0;
+    layer=1;crate=1;
     window.addEventListener("load",setUpTabs,false);
+    // make detached window
+    function makeRemote(){
+    remote=window.open("","remote window",width=500,height=500);
+    remote.location.href=tmapname+"crate1.xml";
+    if(remote.opener==null) remote.opener=window;
+    remote.opener.name="opener";
+    return remote;
+    }
+    remotewin=makeRemote();
 
 
     //]]>
@@ -53,8 +63,8 @@
 </fieldset>
         <div class="map" id="trackermap" >
 
-<div id="div1" STYLE="display: ;position:absolute;top:100px;left:10px;overflow:hidden">
-<img id="img1" src="null.png" alt="trackermap" STYLE="display: ;position:absolute;top:100px;left:10px;overflow:hidden" width="1000" height="550" />
+<div id="div1" STYLE="display: ;position:absolute;top:120px;left:10px;overflow:hidden">
+<img id="img1" src="null.png" alt="trackermap" STYLE="display: ;position:absolute;top:120px;left:10px;overflow:hidden" width="1000" height="600" />
 </div>
 <iframe id="layer1"  width="600" height="600"  STYLE="display:none;position:absolute;top:100px;left:100px;z-index:2" />
 <iframe id="print1"  width="300" height="600"  STYLE="display:none;position:absolute;top:100px;left:600px;z-index:2" />
@@ -69,12 +79,12 @@
 <button onclick="zoomIt('-');">-</button>
 <button onclick="zoomIt('Home');">Home</button>
 <button onclick="zoomIt('Full');">Full</button>
-<button onclick="zoomIt('SVG');">Single layer</button>
+<button onclick="zoomIt('SVG');">Single crate</button>
 </fieldset>
 <div class="map" id="fedtrackermap" >
 
 <div id="div2" STYLE="display: ;position:absolute;top:100px;left:10px">
-<img id="img2" src="null.png" alt="fed trackermap" STYLE="display: ;position:absolute;top:100px;left:10px;overflow:hidden"  width="1000" height="550"/>
+<img id="img2" src="null.png" alt="fed trackermap" STYLE="display: ;position:absolute;top:100px;left:10px;overflow:hidden"  width="1000" height="600"/>
 </div>
 <iframe id="layer2"  width="650" height="600"  STYLE="display:none;position:absolute;top:100px;left:100px;z-index:2" />
 <iframe id="print2"  width="300" height="600"  STYLE="display:none;position:absolute;top:100px;left:650px;z-index:2" />
@@ -83,14 +93,6 @@
       </div>
       </div>
       </div>
-      Det:
-    <input id    = "currentElementText"
-          class = "inputBox"
-          type  = "text"
-          value = ""
-                 name  = "currentElementText"
-                 size  = "100">
-          </input>
 											  
   </body>
 </html>
