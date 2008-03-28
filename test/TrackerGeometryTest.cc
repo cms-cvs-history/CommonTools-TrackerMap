@@ -3,6 +3,7 @@
 #include <sstream>
 #include <string>
 #include <vector>
+#include <ctime>
 using namespace std;
 // user include files
 #include "FWCore/Framework/interface/Frameworkfwd.h"
@@ -69,6 +70,7 @@ TrackerGeometryTest::analyze( const edm::Event& iEvent, const edm::EventSetup& i
  TrackerMap * tkMap = new TrackerMap();//trackermap without fed processing
   TrackerMap * tkMap1 = new TrackerMap(pset,pDD1);
   TrackerMap * tkMap2 = new TrackerMap(pset,pDD1);
+  clock_t start, finish;
 
 //  TrackerMap * tkMap = new TrackerMap( "GeomDetUnitId : move the mouse on the module and look at the second text line below");
 //  TrackerMap * tkMap1 = new TrackerMap( "Default rainbow palette test");
@@ -250,8 +252,22 @@ const vector<unsigned short> feds = pDD1->feds();
     tkMap1->showPalette(true);
     tkMap1->printall(true,0.,0.,"tmap");
     tkMap2->showPalette(true);
-    tkMap2->printall(true,0.,0.,"fakecabling");
+   tkMap2->printall(true,0.,0.,"fakecabling");
+    start = clock();
     tkMap2->printonline();
+    tkMap2->printonline();
+    tkMap2->printonline();
+    tkMap2->printonline();
+    tkMap2->printonline();
+    tkMap2->printonline();
+    tkMap2->printonline();
+    tkMap2->printonline();
+    tkMap2->printonline();
+    tkMap2->printonline();
+      finish = clock();
+    cout << "Timing test for executing 10 times printonline: "
+         << ((double)(finish - start))/CLOCKS_PER_SEC<<endl;
+
 //    tkMap2->print(true,0.,0.,"svgmap3");
     tkMap2->save_as_fedtrackermap(true,0.,0.,"fedsvgmap3.png",3000,1600);
     tkMap2->save_as_fedtrackermap(true,0.,0.,"fedsvgmap3.svg",3000,1600);
