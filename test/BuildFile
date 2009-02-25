@@ -9,13 +9,3 @@
 <use name=FWCore/Framework>      
 <use name=qt3>
 <use name=rootcore>
-<library file=TrackerGeometryTest.cc name=TrackerGeometryTest> 
-<use name=Geometry/Records>
-<flags EDM_PLUGIN=1>
-</library>
-<library file=FedTrackerMapTest.cc name=FedTrackerMapTest> 
-<use name=Geometry/Records>
-<flags EDM_PLUGIN=1>
-</library> 	
-<bin file=VisTrackerMapApp.cpp name=VisTrackerMapApp>
-</bin>
