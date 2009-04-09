@@ -7,5 +7,5 @@
 <use name=CalibFormats/SiStripObjects>
 <use name=CondFormats/DataRecord>
 <use name=FWCore/Framework>      
-<use name=qt3>
+<use name=qt>
 <use name=rootcore>
